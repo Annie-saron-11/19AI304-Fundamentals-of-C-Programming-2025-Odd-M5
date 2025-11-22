@@ -4,7 +4,7 @@
 ## 10. Implementation of programs using pointer arithmetic.
 # Ex.No:21
   Implement a C program to demonstrate call by value and call by reference by swapping two integers using separate functions.
-# Date : 
+# Date : 13/11/2025
 # Aim:
  To implement a C program that illustrates the difference between call by value and call by reference by swapping two integer variables using two separate functions.
 # Algorithm:
@@ -39,7 +39,47 @@
 ### Step 12: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void swapv(int x, int y)
+{
+    int t;
+    t = x;
+    x = y;
+    y = t;
+    printf("\nInside swapv: x = %d, y = %d", x, y);
+}
+
+void swapr(int *x, int *y)
+{
+    int t;
+    t = *x;
+    *x = *y;
+    *y = t;
+    printf("\nInside swapr: x = %d, y = %d", *x, *y);
+}
+
+int main()
+{
+    int a = 10, b = 20;
+
+    printf("Before swapv: a = %d, b = %d", a, b);
+    swapv(a, b);
+    printf("\nAfter swapv: a = %d, b = %d", a, b);
+
+    printf("\n\nBefore swapr: a = %d, b = %d", a, b);
+    swapr(&a, &b);
+    printf("\nAfter swapr: a = %d, b = %d", a, b);
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1542" height="788" alt="image" src="https://github.com/user-attachments/assets/96e731bd-2f33-4dd2-83f3-b5a6f7fbda81" />
+
+
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -48,7 +88,7 @@
 # IAPR-5- Module 5 - FoC
 # Ex.No:22
   Implement a C program to generate the Fibonacci series using a recursive function. The program should accept a positive integer n and display the first n terms of the Fibonacci sequence.
-# Date : 
+# Date : 13/11/2025
 # Aim:
   To implement a C program that uses a recursive function to generate and display the Fibonacci series for a given number of terms.
 # Algorithm:
@@ -77,7 +117,35 @@
 ### Step 10:
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int fibo(int x)
+{
+    if (x == 0 || x == 1)
+        return x;
+    else
+        return fibo(x - 1) + fibo(x - 2);
+}
+
+int main()
+{
+    int n, i;
+    scanf("%d", &n);
+
+    printf("Fibonacci series of %d terms:\n", n);
+
+    for (i = 0; i < n; i++)
+        printf("%d ", fibo(i));
+
+    return 0;
+}
+```
 # Output:
+
+<img width="1372" height="703" alt="image" src="https://github.com/user-attachments/assets/23c45867-90d5-4530-87d3-b779265844e0" />
+
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -86,7 +154,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:23
    Implement a C program to demonstrate recursion by printing a sequence of even or odd numbers from a given lower limit to an upper limit, with each recursive call progressing by 2.
-# Date : 
+# Date : 13/11/2025
 # Aim:
   To implement a C program that uses a recursive function to print even or odd numbers in a specified range based on the starting value provided by the user.
 # Algorithm:
@@ -119,7 +187,38 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+```#include <stdio.h>
+
+void printNum(int cur, int limit)
+{
+    if (cur > limit)
+        return;
+
+    printf("%d ", cur);
+    printNum(cur + 2, limit);
+}
+
+int main()
+{
+    int start, end;
+
+    printf("Enter start number: ");
+    scanf("%d", &start);
+
+    printf("Enter end number: ");
+    scanf("%d", &end);
+
+    printNum(start, end);
+
+    return 0;
+}
+```
+
 # Output:
+
+<img width="1709" height="785" alt="image" src="https://github.com/user-attachments/assets/cf7b9518-24b9-4cbe-b175-ef9531eb7c39" />
+
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -128,7 +227,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:24
    Implement a C program that dynamically allocates memory using calloc(), accepts integer inputs from the user, computes their sum, and prints the sum.
-# Date : 
+# Date : 13/11/2025
 # Aim:
   To implement a C program that dynamically allocates memory for an array of integers using calloc(), accepts elements from the user, computes their sum, and displays the sum.
 # Algorithm:
@@ -161,7 +260,37 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int *ptr, n, i, sum = 0;
+    scanf("%d", &n);
+
+    ptr = calloc(n, sizeof(int));
+
+    if (ptr == NULL)
+        return 0;
+
+    for (i = 0; i < n; i++)
+        scanf("%d", ptr + i);
+
+    for (i = 0; i < n; i++)
+        sum += *(ptr + i);
+
+    printf("Sum = %d", sum);
+
+    free(ptr);
+    return 0;
+}
+```
 # Output:
+
+<img width="1763" height="788" alt="image" src="https://github.com/user-attachments/assets/45a8ce3e-26e6-4479-bced-1e81d731a43d" />
+
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -170,7 +299,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:25
    Implement a C program that reads a set of integers into an array and displays the array elements using a user-defined function.
-# Date : 
+# Date : 13/11/2025
 # Aim:
   To implement a C program that reads integers into an array and displays the elements using a user-defined function.
 # Algorithm:
@@ -197,6 +326,40 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void displayArray(int *arr, int size);
+
+int main() {
+    int arr[5];
+    int i;
+
+    printf("Enter 5 integers:\n");
+
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    displayArray(arr, 5);
+
+    return 0;
+}
+
+void displayArray(int *arr, int size) {
+    int i;
+    printf("Array elements are:\n");
+
+    for (i = 0; i < size; i++) {
+        printf("%d ", *(arr + i));   
+    }
+}
+```
 # Output:
+
+<img width="1473" height="767" alt="image" src="https://github.com/user-attachments/assets/2bc68a3d-4b2c-4ffa-82ed-ca549a4fdc4d" />
+
+
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
